@@ -1,0 +1,29 @@
+<div class="container" *ngIf="!!employee; else message">
+    <h1>{{ employee.FirstName }} Details</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ employee.FirstName }}</td>
+                <td>{{ employee.LastName }}</td>
+                <td>{{ employee.Gender==='1'?'Male':'Female' }}</td>
+                <td>{{ employee.Age }}</td>
+                <td>{{ employee.Salary | currency:'INR' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" class="btn btn-primary" value="Back" (click)="navigateToList()" />
+</div>
+<ng-template #message>
+    <H4 class="text-center text-warning">
+        User not selected!!!
+    </H4>
+</ng-template>

@@ -1,0 +1,30 @@
+
+<div class="container">
+  <h1>Add Employee</h1>
+  <form (ngSubmit)="AddNewUser(employeeInfo)">
+    <div class="form-group">
+      <label for="txtFName">First Name</label>
+      <input type="text" class="form-control" [(ngModel)]="employeeInfo.FirstName" name="txtFName" placeholder="First Name">
+    </div>
+    <div class="form-group">
+      <label for="txtLName">Last Name</label>
+      <input type="text" [(ngModel)]="employeeInfo.LastName" class="form-control" name="txtLName" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <label for="drpGender">Gender</label>
+      <select class="form-control" [(ngModel)]="employeeInfo.Gender" name="drpGender">
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  <h4>Settings</h4>
+  <div class="custom-control custom-switch">
+    <input type="checkbox" [(ngModel)]='showEmployeeList' class="custom-control-input" id="switchStatus" (change)='changeStatus()'>
+    <label class="custom-control-label" for="switchStatus">{{statusText}} Employee List</label>
+  </div>
+</div>
+
+<app-employee-list [employeeList]="employeeList" (deleteEmployeeEvent)="DeleteEmpDetails($event)"></app-employee-list>

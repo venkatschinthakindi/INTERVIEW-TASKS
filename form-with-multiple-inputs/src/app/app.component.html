@@ -1,0 +1,51 @@
+
+<div class="container">
+  <h1>Add Employee</h1>
+  <form (ngSubmit)="AddNewUser(employeeInfo)">
+    <div class="form-group">
+      <label for="txtFName">First Name</label>
+      <input type="text" class="form-control" [(ngModel)]="employeeInfo.FirstName" name="txtFName" placeholder="First Name">
+    </div>
+    <div class="form-group">
+      <label for="txtLName">Last Name</label>
+      <input type="text" [(ngModel)]="employeeInfo.LastName" class="form-control" name="txtLName" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+      <label for="drpGender">Gender</label>
+      <select class="form-control" [(ngModel)]="employeeInfo.Gender" name="drpGender">
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+<div class="container">
+  <h1>Employee List</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employeeList">
+        <td>{{ employee.FirstName }}</td>
+        <td>{{ employee.LastName }}</td>
+        <td>{{ employee.Gender==='1'?'Male':'Female' }}</td>
+        <td>
+          <div (click)="DeleteEmpDetails(employee.Id)">
+            <span class="pull-left btn btn-danger">Delete</span>
+          </div>
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+  <div class="text-center text-warning" *ngIf="employeeList.length<=0">No data found!!!</div>
+</div>

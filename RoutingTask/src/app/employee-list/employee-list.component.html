@@ -1,0 +1,28 @@
+<div class="container" *ngIf="showEmployeeList">
+    <h1>Employee List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employeeList">
+                <td>{{ employee.FirstName }}</td>
+                <td>{{ employee.LastName }}</td>
+                <td>{{ employee.Gender==='1'?'Male':'Female' }}</td>
+                <td>
+                    <div (click)="DeleteEmpDetails(employee.Id)">
+                        <span class="pull-left btn btn-danger">Delete</span>
+                    </div>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="text-center text-warning" *ngIf="employeeList.length<=0">No data found!!!</div>
+</div>
